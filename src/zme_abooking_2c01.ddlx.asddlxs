@@ -1,0 +1,32 @@
+@Metadata.layer: #CORE
+@Search.searchable: true
+@UI : {
+ headerInfo: {
+    typeName: 'Booking Approval',
+    typeNamePlural: 'Bookings Approval',
+
+    title: {
+        type: #STANDARD,
+        value: 'Booking_ID'
+    }
+
+}
+}
+annotate view ZC_ABOOKING_2C01 with
+{
+  @UI.facet: [
+   {
+       id: 'Booking',
+       purpose: #STANDARD,
+       position: 10 ,
+       label: 'Facet Booking',
+       type: #IDENTIFICATION_REFERENCE
+
+   }
+   ]
+
+  @Search.defaultSearchElement: true
+  Travel_ID;
+
+
+}

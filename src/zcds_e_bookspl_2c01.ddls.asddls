@@ -18,8 +18,6 @@ define view entity ZCDS_E_BOOKSPL_2C01
   key travel_id             as TravelId,
   key booking_id            as BookingId,
   key booking_supplement_id as BookingSupplementId,
-      @ObjectModel.foreignKey.association: '_Supplement'
-      @ObjectModel.text.association: '_SuppText'
       supplement_id         as SupplementId,
       @Semantics.amount.currencyCode: 'CurrencyCode'
       price                 as Price,

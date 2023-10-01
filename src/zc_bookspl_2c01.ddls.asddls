@@ -1,5 +1,6 @@
 @EndUserText.label: 'Consumption Book. Suppl'
 @AccessControl.authorizationCheck: #NOT_REQUIRED
+@Metadata.allowExtensions: true
 define view entity ZC_BOOKSPL_2C01
   as projection on ZCDS_E_BOOKSPL_2C01
 
@@ -11,8 +12,7 @@ define view entity ZC_BOOKSPL_2C01
       _SuppText.Description as Description : localized,
       @Semantics.amount.currencyCode: 'Currency'
       Price,
-      @Semantics.currencyCode: true
-      CurrencyCode          as Currency,
+      CurrencyCode as Currency,
       /* Associations */
       _Booking : redirected to parent ZC_BOOKING_2C01,
       _Supplement,

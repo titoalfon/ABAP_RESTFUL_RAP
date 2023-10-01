@@ -1,5 +1,6 @@
 @EndUserText.label: 'Consumption Travel'
 @AccessControl.authorizationCheck: #NOT_REQUIRED
+@Metadata.allowExtensions: true
 define root view entity ZC_R_TRAVEL_2C01
   provider contract transactional_query
   as projection on ZCDS_RE_TRAVEL_2C01

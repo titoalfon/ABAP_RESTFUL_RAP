@@ -1,5 +1,6 @@
 @EndUserText.label: 'Consumption Booking Approval'
 @AccessControl.authorizationCheck: #NOT_REQUIRED
+@Metadata.allowExtensions: true
 define view entity ZC_ABOOKING_2C01
   as projection on ZCDS_E_BOOKING_2C01
 {

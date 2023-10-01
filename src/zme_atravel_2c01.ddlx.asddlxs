@@ -1,0 +1,56 @@
+@Metadata.layer: #CORE
+@Search.searchable: true
+@UI : {
+ headerInfo: {
+    typeName: 'Travel Approval',
+    typeNamePlural: 'Travels Approval',
+
+    title: {
+        type: #STANDARD,
+        value: 'Description'
+    },
+    description: {
+        type: #STANDARD,
+        label: 'Descripcion Header Approval Travel',
+        value: 'Travel_ID'
+
+    }
+}
+}
+annotate view ZC_R_ATRAVEL_2C01 with
+{
+  @UI.facet: [
+  {
+      id: 'Travel',
+      purpose: #STANDARD,
+      position: 10 ,
+      label: 'Facet Label Travel',
+      type: #IDENTIFICATION_REFERENCE
+
+  },
+
+    {
+      id: 'Booking',
+      purpose: #STANDARD,
+      position: 20 ,
+      label: 'Facet Label Booking',
+      type: #LINEITEM_REFERENCE,
+      targetElement: '_Bookings'
+
+  }
+
+  ]
+
+  @UI: {
+  lineItem: [{ position: 10,
+               exclude : true,
+               hidden : true,
+               importance: #HIGH }],
+
+  identification: [{ position: 9, label : 'Travel ID [1,...,999999]' }]
+
+  }
+  @Search.defaultSearchElement: true
+  Travel_ID;
+
+}

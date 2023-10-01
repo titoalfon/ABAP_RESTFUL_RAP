@@ -1,5 +1,6 @@
 @EndUserText.label: 'Consumption Booking'
 @AccessControl.authorizationCheck: #NOT_REQUIRED
+@Metadata.allowExtensions: true
 define view entity ZC_BOOKING_2C01
   as projection on ZCDS_E_BOOKING_2C01
 {
@@ -14,7 +15,7 @@ define view entity ZC_BOOKING_2C01
       @Semantics.amount.currencyCode: 'Currency'
       FlightPrice   as Price,
       @Semantics.currencyCode: true
-      CurrencyCode as Currency,
+      CurrencyCode  as Currency,
       BookingStatus,
       LastChangedAt,
       /* Associations */
