@@ -8,6 +8,7 @@ define view entity ZC_BOOKING_2C01
   key BookingId     as Booking_ID,
       BookingDate,
       CustomerId    as Customer_ID,
+      @ObjectModel.text.element: [ 'AirlineName' ]
       CarrierId     as Airline,
       _Carrier.Name as AirlineName,
       ConnectionId,
@@ -22,7 +23,6 @@ define view entity ZC_BOOKING_2C01
       _BookSpl : redirected to composition child ZC_BOOKSPL_2C01,
       _Carrier,
       _Connection,
-      _Currency,
       _Customer,
       _Travel  : redirected to parent ZC_R_TRAVEL_2C01
 }

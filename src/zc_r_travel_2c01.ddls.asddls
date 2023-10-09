@@ -6,17 +6,21 @@ define root view entity ZC_R_TRAVEL_2C01
   as projection on ZCDS_RE_TRAVEL_2C01
 
 {
-  key TravelId     as Travel_ID,
-      AgencyId     as Agency_ID,
-      CustomerId   as Customer_ID,
-      BeginDate    as FromDate,
-      EndDate      as ToDate,
+  key TravelId           as Travel_ID,
+      @ObjectModel.text.element: [ 'AgencyName' ]
+      AgencyId           as Agency_ID,
+      _Agency.Name       as AgencyName,
+      CustomerId         as Customer_ID,
+      @ObjectModel.text.element: [ 'CustomerName' ]
+      _Customer.LastName as CustomerName,
+      BeginDate          as FromDate,
+      EndDate            as ToDate,
       @Semantics.amount.currencyCode: 'Currency'
-      BookingFee   as Fee,
+      BookingFee         as Fee,
       @Semantics.amount.currencyCode: 'Currency'
-      TotalPrice   as Total,
+      TotalPrice         as Total,
       @Semantics.currencyCode: true
-      CurrencyCode as Currency,
+      CurrencyCode       as Currency,
       Description,
       OverallStatus,
       CreatedBy,

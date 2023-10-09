@@ -8,11 +8,13 @@ define view entity ZC_BOOKSPL_2C01
   key TravelId              as Travel_ID,
   key BookingId             as Booking_ID,
   key BookingSupplementId   as BookSupplement_ID,
+      @ObjectModel.text.element: ['SupplementDescription']
       SupplementId          as Supplement_ID,
-      _SuppText.Description as Description : localized,
+      _SuppText.Description as SupplementDescription : localized,
       @Semantics.amount.currencyCode: 'Currency'
       Price,
-      CurrencyCode as Currency,
+      CurrencyCode          as Currency,
+      LastChangedAt,
       /* Associations */
       _Booking : redirected to parent ZC_BOOKING_2C01,
       _Supplement,

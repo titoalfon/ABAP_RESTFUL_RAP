@@ -52,5 +52,51 @@ annotate view ZC_R_ATRAVEL_2C01 with
   }
   @Search.defaultSearchElement: true
   Travel_ID;
+  @UI: {
+  lineItem: [ { position: 20, importance: #HIGH } ],
+  identification: [ { position: 20 } ],
+  selectionField: [ { position: 20 } ] }
+  @Consumption.valueHelpDefinition: [ { entity : {name: '/DMO/I_Agency', element: 'AgencyID' } } ]
+  @Search.defaultSearchElement: true
+  Agency_ID;
+  @UI: {
+  lineItem: [ { position: 30, importance: #HIGH } ],
+  identification: [ { position: 30 } ],
+  selectionField: [ { position: 30 } ] }
+  @Consumption.valueHelpDefinition: [ { entity : {name: '/DMO/I_Customer', element: 'CustomerID' } } ]
+  @Search.defaultSearchElement: true
+  Customer_ID;
+  @UI: {
+  identification:[ { position: 40 } ] }
+  FromDate;
+  @UI: {
+  identification:[ { position: 41 } ] }
+  ToDate;
+  @UI: {
+  lineItem: [ { position: 42, importance: #MEDIUM } ],
+  identification: [ { position: 42 } ] }
+  BookingFee;
+  @UI: {
+  lineItem: [ { position: 43, importance: #MEDIUM } ],
+  identification: [ { position: 43, label: 'Total Price' } ] }
+  TotalPrice;
+  @Consumption.valueHelpDefinition: [ {entity: {name: 'I_Currency', element: 'Currency' } } ]
+  CurrencyCode;
+  @UI: {
+  lineItem: [ { position: 15, importance: #HIGH },
+  { type: #FOR_ACTION, dataAction: 'acceptTravel', label: 'Accept Travel' },
+  { type: #FOR_ACTION, dataAction: 'rejectTravel', label: 'Reject Travel' } ],
+  identification: [ { position: 15 },
+  { type: #FOR_ACTION, dataAction: 'acceptTravel', label: 'Accept Travel' },
+  { type: #FOR_ACTION, dataAction: 'rejectTravel', label: 'Reject Travel' } ] ,
+  selectionField: [ { position: 40 } ] }
+  @EndUserText.label: 'Overall Status'
+  OverallStatus;
+  @UI: {
+  lineItem: [ { position: 45, importance: #MEDIUM } ],
+  identification:[ { position: 45 } ] }
+  Description;
+  @UI.hidden: true
+  LastChangedAt;
 
 }

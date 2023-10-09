@@ -27,6 +27,37 @@ annotate view ZC_ABOOKING_2C01 with
 
   @Search.defaultSearchElement: true
   Travel_ID;
+  @UI: { lineItem: [ { position: 20, importance: #HIGH } ],
+  identification: [ { position: 20 } ] }
+  @Search.defaultSearchElement: true
+  Booking_ID;
+  @UI: { lineItem: [ { position: 30, importance: #HIGH } ],
+  identification: [ { position: 30 } ] }
+  BookingDate;
+  @UI: { lineItem: [ { position: 40, importance: #HIGH } ],
+  identification: [ { position: 40 } ],
+  selectionField: [{ position: 10 }]
+  }
+  @Search.defaultSearchElement: true
+  CustomerId;
+  @UI: { lineItem: [ { position: 50, importance: #HIGH } ],
+  identification: [ { position: 50 } ] }
+  Airline;
+  @UI: { lineItem: [ { position: 60, importance: #HIGH } ],
+  identification: [ { position: 60 } ] }
+  ConnectionId;
+  @UI: { lineItem: [ { position: 70, importance: #HIGH } ],
+  identification: [ { position: 70 } ] }
+  FlightDate;
+  @UI: { lineItem: [ { position: 80, importance: #HIGH } ],
+  identification: [ { position: 80 } ] }
+  FlightPrice;
+  @UI: { lineItem: [ { position: 90, importance: #HIGH, label: 'Status' } ],
+  identification: [ { position: 90, label: 'Status [N(New)| X(Canceled)| B(Booked)]' } ] }
+  BookingStatus;
+  /* Admininstrative fields */
+  @UI.hidden: true
+  LastChangedAt;
 
 
 }

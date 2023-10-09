@@ -22,6 +22,8 @@ define view entity ZCDS_E_BOOKSPL_2C01
       @Semantics.amount.currencyCode: 'CurrencyCode'
       price                 as Price,
       currency_code         as CurrencyCode,
+      @Semantics.systemDateTime.lastChangedAt: true
+      _Travel.LastChangedAt as LastChangedAt,
 
       /* Associations */
       _Booking,

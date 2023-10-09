@@ -8,9 +8,7 @@ define root view entity ZCDS_RE_TRAVEL_2C01
   association [0..1] to I_Currency          as _Currency on $projection.CurrencyCode = _Currency.Currency
 {
   key travel_id       as TravelId,
-      @ObjectModel.foreignKey.association: '_Agency'
       agency_id       as AgencyId,
-      @ObjectModel.foreignKey.association: '_Customer'
       customer_id     as CustomerId,
       begin_date      as BeginDate,
       end_date        as EndDate,
@@ -18,7 +16,6 @@ define root view entity ZCDS_RE_TRAVEL_2C01
       booking_fee     as BookingFee,
       @Semantics.amount.currencyCode: 'CurrencyCode'
       total_price     as TotalPrice,
-      @ObjectModel.foreignKey.association: '_Currency'
       currency_code   as CurrencyCode,
       @Semantics.text: true
       description     as Description,

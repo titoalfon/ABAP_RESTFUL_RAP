@@ -8,6 +8,7 @@ define view entity ZC_ABOOKING_2C01
   key BookingId as Booking_ID,
       BookingDate,
       CustomerId,
+      @ObjectModel.text.element: ['AirlineName']
       CarrierId as Airline,
       _Carrier.Name as AirlineName,
       ConnectionId,
