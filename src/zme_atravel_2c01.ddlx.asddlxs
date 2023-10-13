@@ -1,55 +1,32 @@
 @Metadata.layer: #CORE
 @Search.searchable: true
-@UI : {
- headerInfo: {
-    typeName: 'Travel Approval',
-    typeNamePlural: 'Travels Approval',
-
-    title: {
-        type: #STANDARD,
-        value: 'Description'
-    },
-    description: {
-        type: #STANDARD,
-        label: 'Descripcion Header Approval Travel',
-        value: 'Travel_ID'
-
+@UI: {
+    headerInfo: {
+        typeName: 'Travel',
+        typeNamePlural: 'Travels',
+        title: {
+            type: #STANDARD,
+            value: 'Travel_ID'
+        }
     }
-}
-}
+    }
 annotate view ZC_R_ATRAVEL_2C01 with
 {
-  @UI.facet: [
-  {
-      id: 'Travel',
-      purpose: #STANDARD,
-      position: 10 ,
-      label: 'Facet Label Travel',
-      type: #IDENTIFICATION_REFERENCE
-
-  },
-
-    {
-      id: 'Booking',
-      purpose: #STANDARD,
-      position: 20 ,
-      label: 'Facet Label Booking',
-      type: #LINEITEM_REFERENCE,
-      targetElement: '_Bookings'
-
-  }
-
-  ]
-
+  @UI.facet: [{ id: 'Travel',
+  purpose: #STANDARD,
+  type: #IDENTIFICATION_REFERENCE ,
+  label: 'Travel',
+  position: 10 },
+  { id : 'Booking',
+  purpose: #STANDARD,
+  type: #LINEITEM_REFERENCE,
+  label: 'Booking',
+  position: 20,targetElement: '_Bookings' }]
   @UI: {
-  lineItem: [{ position: 10,
-               exclude : true,
-               hidden : true,
-               importance: #HIGH }],
-
-  identification: [{ position: 9, label : 'Travel ID [1,...,999999]' }]
-
-  }
+  lineItem: [{
+  position: 10,
+  importance: #HIGH }],
+  identification: [{ position: 10, label: 'Travel ID [1,...,99999999]' }]}
   @Search.defaultSearchElement: true
   Travel_ID;
   @UI: {
@@ -82,16 +59,6 @@ annotate view ZC_R_ATRAVEL_2C01 with
   TotalPrice;
   @Consumption.valueHelpDefinition: [ {entity: {name: 'I_Currency', element: 'Currency' } } ]
   CurrencyCode;
-  @UI: {
-  lineItem: [ { position: 15, importance: #HIGH },
-  { type: #FOR_ACTION, dataAction: 'acceptTravel', label: 'Accept Travel' },
-  { type: #FOR_ACTION, dataAction: 'rejectTravel', label: 'Reject Travel' } ],
-  identification: [ { position: 15 },
-  { type: #FOR_ACTION, dataAction: 'acceptTravel', label: 'Accept Travel' },
-  { type: #FOR_ACTION, dataAction: 'rejectTravel', label: 'Reject Travel' } ] ,
-  selectionField: [ { position: 40 } ] }
-  @EndUserText.label: 'Overall Status'
-  OverallStatus;
   @UI: {
   lineItem: [ { position: 45, importance: #MEDIUM } ],
   identification:[ { position: 45 } ] }

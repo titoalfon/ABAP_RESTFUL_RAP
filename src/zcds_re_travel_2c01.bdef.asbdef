@@ -1,0 +1,62 @@
+managed;
+
+define behavior for ZCDS_RE_TRAVEL_2C01 alias Travel
+implementation in class zbp_re_travel_2c01 unique
+persistent table ztb_travel_2c01
+lock master
+authorization master ( instance )
+etag master LastChangedAt
+{
+  // administrative fields : readOnly
+  field ( readonly ) LastChangedAt, LastChangedBy, CreatedAt, CreatedBy;
+  // mandatory fields to create a travel
+  field ( mandatory ) AgencyId, OverallStatus, BookingFee, CurrencyCode;
+  // Dynamic field control
+  field ( features : instance ) TravelId;
+  create;
+  update;
+  delete;
+  //Validations
+  validation validateCustomer on save { field CustomerId; }
+  validation validateDates on save { field BeginDate, EndDate; }
+  validation validateStatus on save { field OverallStatus; }
+  //Actions
+  action (features : instance) acceptTravel result[1] $self;
+  action (features : instance) rejectTravel result[1] $self;
+  action createTravelByTemplate result[1] $self;
+
+  association _Bookings { create; }
+}
+
+define behavior for ZCDS_E_BOOKING_2C01 alias Bookings
+implementation in class zbp_e_booking_2c01 unique
+persistent table ztb_booking_2c01
+lock dependent by _Travel
+authorization dependent by _Travel
+etag master LastChangedAt
+{
+  update;
+  delete;
+  field ( readonly ) TravelId;
+  field ( mandatory ) CarrierId, ConnectionId, FlightDate, BookingStatus;
+  //Validations
+  validation validateStatus on save { field BookingStatus; }
+
+  association _Travel;
+  association _BookSpl { create; }
+}
+
+define behavior for ZCDS_E_BOOKSPL_2C01 alias Supplement
+implementation in class zbp_e_bookspl_2c01 unique
+with unmanaged save
+lock dependent by _Travel
+authorization dependent by _Travel
+etag master LastChangedAt
+{
+  update;
+  delete;
+  field ( readonly ) BookingId, TravelId;
+  field ( mandatory ) SupplementId, Price;
+  association _Travel;
+  association _Booking;
+}
